@@ -24,7 +24,11 @@ informativos en cada paso del proceso.
 
 """
 
-print("Bienvenido a la página de nike CR")
+print("Bienvenido a la página de nike CR, aquí puedes modificar las estadisticas de las Zapatillas")
+print("Las claves que puedes modificar son: producto, Talla, Color y Stock")
+print("Recuerda que debes ingresar la clave tal y como se muestra en el diccionario")
+
+
 
 datos={
     "producto":"Zapatillas",
@@ -33,10 +37,32 @@ datos={
     "Stock": 90
 }
 
-Claves=datos.keys() 
-print(Claves)
-Claves2=datos.values()
+
+def Funcion():
+        Usuario_O=input("¿Quieres modificar o eliminar algún dato? (Escribe editar o borrar) ")
+
+        while Usuario_O=="editar":
+            User=input("¡Que datos deseas modificar?: ")
+
+            datos["Talla"]= int(input("Cúal será la nueva talla? ")) if User=="Talla" else "Dato no existente"
+            datos["Color"]=input("Cúal será el color nuevo? ") if User=="Color" else "Dato no existente"
+            datos["Stock"]=int (input("Stock? ")) if User=="Stock" else ""
+
+            Usuario_O=input("Quieres modificar otro dato? ")
+
+        print(datos)
+        
+        while Usuario_O=="borrar":
+            User=input("¡Que datos deseas borrar?: ")
+            datos.pop('Talla') if User=="Talla" else "Dato no existente"
+            datos.pop('Color') if User=="Color" else "Dato no existente"
+            datos.pop('Stock') if User=="Stock" else "Dato no existente"
+
+            Usuario_O=input("Quieres borrar otro dato? ")
+        
+        print(datos)
 
 
-datos["Talla"]=input("Ingresa una talla nueva: ")
-print(Claves2)
+Funcion()
+
+
