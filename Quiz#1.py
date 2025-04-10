@@ -39,29 +39,28 @@ datos={
 
 
 def Funcion():
-        Usuario_O=input("¿Quieres modificar o eliminar algún dato? (Escribe editar o borrar) ")
+    
+    Usuario_O=input("¿Quieres modificar o eliminar algún dato? (Escribe editar o borrar) ")
 
-        while Usuario_O=="editar":
-            User=input("¡Que datos deseas modificar?: ")
+    while Usuario_O=="editar":
+                User=input("¡Que datos deseas modificar?: ")
+                
+                datos["Talla"]= int(input("Cúal será la nueva talla? ")) if User=="Talla" else datos["Talla"]
+                datos["Color"]=input("Cúal será el color nuevo? ") if User=="Color" else datos["Color"]
+                datos["Stock"]=int (input("Stock? ")) if User=="Stock" else datos["Stock"]
 
-            datos["Talla"]= int(input("Cúal será la nueva talla? ")) if User=="Talla" else "Dato no existente"
-            datos["Color"]=input("Cúal será el color nuevo? ") if User=="Color" else "Dato no existente"
-            datos["Stock"]=int (input("Stock? ")) if User=="Stock" else ""
+                Usuario_O=input("Quieres modificar otro dato? ")
 
-            Usuario_O=input("Quieres modificar otro dato? ")
+            
+            
+    while Usuario_O=="borrar":
+                    User=input("¡Que datos deseas borrar?: ")
+                    datos.pop('Talla') if User=="Talla" else "Dato no existente"
+                    datos.pop('Color') if User=="Color" else "Dato no existente"
+                    datos.pop('Stock') if User=="Stock" else "Dato no existente"
 
-        print(datos)
-        
-        while Usuario_O=="borrar":
-            User=input("¡Que datos deseas borrar?: ")
-            datos.pop('Talla') if User=="Talla" else "Dato no existente"
-            datos.pop('Color') if User=="Color" else "Dato no existente"
-            datos.pop('Stock') if User=="Stock" else "Dato no existente"
-
-            Usuario_O=input("Quieres borrar otro dato? ")
-        
-        print(datos)
-
+                    Usuario_O=input("Quieres borrar otro dato? ")
+    print(datos)
 
 Funcion()
 
