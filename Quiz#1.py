@@ -24,44 +24,81 @@ informativos en cada paso del proceso.
 
 """
 
-print("Bienvenido a la página de nike CR, aquí puedes modificar las estadisticas de las Zapatillas")
-print("Las claves que puedes modificar son: producto, Talla, Color y Stock")
-print("Recuerda que debes ingresar la clave tal y como se muestra en el diccionario")
-
-
+def cls():
+    import os
+    os.system('cls' if os.name=='nt' else 'clear')
+def pausa(segundos):
+    import time 
+    time.sleep(segundos)
+    
+Clave=""
+def Frases():
+    print("Bienvenido a la página de nike CR, aquí puedes modificar las estadisticas de las Zapatillas")
+    print("Las claves que puedes modificar son: producto, Talla, Color y Stock")
+    print("Recuerda que debes ingresar la clave tal y como se muestra en el diccionario")
+    print("Las claves son las siguientes: ")
 
 datos={
     "producto":"Zapatillas",
     "Talla":42,
     "Color": "Negro",
     "Stock": 90
-}
-
-
-def Funcion():
+    }
     
-    Usuario_O=input("¿Quieres modificar o eliminar algún dato? (Escribe editar o borrar) ")
-
-    while Usuario_O=="editar":
-                User=input("¡Que datos deseas modificar?: ")
+while True:
+    Frases()
+    print("Talla")
+    print("Color")
+    print("Slock")
+    
+    User1=input("¿Que quieres hacer? borrar o editar? ")
+    
+    if User1=="editar":
+        
+            while True: 
+                User=input("¡Que datos deseas editar?: ")
+                if User in datos:
+                    if User=="Talla":
+                        datos["Talla"]=int (input("Cúal será la talla nueva? "))
+                        print(datos)
+                        pausa(3)
+                        cls()
+                    elif User=="Color":
+                        datos["Color"]=input("Cúal será el color nuevo? ")
+                        print(datos)
+                        pausa(3)
+                        cls()
+                    elif User=="Slock":
+                        datos["Stock"]=int (input("Stock? "))
+                        print(datos)
+                        pausa(3)
+                        cls()
+                    
+                else: 
+                    print(f"La clave {User} no existe, prueba de nuevo") 
+                    pausa(3)
+                    cls()
+                    
+    elif User1=="borrar":
+        User=input("¡Que datos deseas borrar?: ")
+        if User in datos:
+            if User=="Talla":
+                datos.pop('Talla')
+                print(datos)
+                pausa(3)
+                cls()
+            elif User=="Color":
+                datos.pop('Color')
+                print(datos)
+                pausa(3)
+                cls()
+            elif User=="Stock":                
+                datos.pop('Stock')
+                print(datos)
+                pausa(3)
+                cls()
                 
-                datos["Talla"]= int(input("Cúal será la nueva talla? ")) if User=="Talla" else datos["Talla"]
-                datos["Color"]=input("Cúal será el color nuevo? ") if User=="Color" else datos["Color"]
-                datos["Stock"]=int (input("Stock? ")) if User=="Stock" else datos["Stock"]
-
-                Usuario_O=input("Quieres modificar otro dato? ")
-
-            
-            
-    while Usuario_O=="borrar":
-                    User=input("¡Que datos deseas borrar?: ")
-                    datos.pop('Talla') if User=="Talla" else "Dato no existente"
-                    datos.pop('Color') if User=="Color" else "Dato no existente"
-                    datos.pop('Stock') if User=="Stock" else "Dato no existente"
-
-                    Usuario_O=input("Quieres borrar otro dato? ")
-    print(datos)
-
-Funcion()
-
-
+        else:
+            print(f"La clave {User} no existe, prueba de nuevo") 
+            pausa(3)
+            cls()
